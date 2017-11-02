@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pixel.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pixel.description %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @pixel.tags %>
+</p>
+
+<p>
+  <strong>Tracks:</strong>
+  <%= @pixel.tracks %>
+</p>
+
+<%= link_to 'Edit', edit_pixel_path(@pixel) %> |
+<%= link_to 'Back', pixels_path %>

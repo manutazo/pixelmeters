@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pixels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Tags</th>
+      <th>Tracks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pixels.each do |pixel| %>
+      <tr>
+        <td><%= pixel.name %></td>
+        <td><%= pixel.description %></td>
+        <td><%= pixel.tags %></td>
+        <td><%= pixel.tracks %></td>
+        <td><%= link_to 'Show', pixel %></td>
+        <td><%= link_to 'Edit', edit_pixel_path(pixel) %></td>
+        <td><%= link_to 'Destroy', pixel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pixel', new_pixel_path %>
