@@ -6,28 +6,33 @@ module Tracker
     end
 
     def call(env)
-      Rails.logger.warn "\n\n Failed to create record "
 
       @req = ::Rack::Request.new(env)
-      if @req.path_info =~ /tracker.gif/
+      if @req.path_info =~ /tracker.png/
         result = Services::Params.deploy @req.query_string
         location = Services::Locations.lookup(@req.ip)
         ip_address = location["ip"] || @req.ip
+        track_id = result[:track]
         params = {
           ip_address:     ip_address,
           city:           location["city"],
           state:          location["region_name"],
           user_agent:     @req.user_agent,
-          # provider:       @req.referer
-        }
+          provider:       @req.referer,
+          track_id:        track_id
+          }
 
-        if @pixels = Pixel.create!(params)
-          [
-            200, { 'Content-Type' => 'image/gif' },
-            [File.read(File.join(File.dirname(__FILE__), 'tracker.gif'))]
-          ]
+        if Track.find(track_id).present?
+          if @pixels = Pixel.create!(params)
+            [
+              200, { 'Content-Type' => 'image/png' },
+              [File.read(File.join(File.dirname(__FILE__), 'tracker.jpg'))]
+            ]
+          else
+            Rails.logger.warn "\n\n Failed to create record on:#{Date.today}"
+          end
         else
-          Rails.logger.warn "\n\n Failed to create record on:#{Date.today}"
+          Rails.logger.warn "\n\n Failed to create record on, track id no exist:#{Date.today}"
         end
       else
         @app.call(env)

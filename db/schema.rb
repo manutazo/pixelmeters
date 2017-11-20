@@ -10,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024312045) do
+ActiveRecord::Schema.define(version: 20171116212634) do
 
   create_table "pixels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "ip_address"
     t.string   "user_agent"
     t.string   "city"
     t.string   "state"
-    t.integer  "tracks_id"
+    t.string   "provider"
+    t.integer  "track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tracks_id"], name: "index_pixels_on_tracks_id", using: :btree
+    t.index ["track_id"], name: "index_pixels_on_track_id", using: :btree
   end
 
   create_table "tracks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "description"
     t.string   "tags"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["users_id"], name: "index_tracks_on_users_id", using: :btree
+    t.index ["user_id"], name: "index_tracks_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -59,6 +60,4 @@ ActiveRecord::Schema.define(version: 20171024312045) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
-  add_foreign_key "pixels", "tracks", column: "tracks_id"
-  add_foreign_key "tracks", "users", column: "users_id"
 end

@@ -5,8 +5,9 @@ class CreatePixels < ActiveRecord::Migration[5.0]
       t.string :user_agent
       t.string :city
       t.string :state
+      t.string :provider
 
-      t.belongs_to :tracks, foreign_key: true
+      t.belongs_to :track
 
       t.timestamps
     end

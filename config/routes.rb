@@ -1,4 +1,5 @@
 Pixelmeters::Application.routes.draw do
+  resources :tracks
   resources :pixels
   devise_for :users
   root to: "home#index"

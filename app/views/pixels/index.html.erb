@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Tags</th>
-      <th>Tracks</th>
+      <th>Ip</th>
+      <th>track name</th>
+      <th>city</th>
+      <th>state</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
   <tbody>
     <% @pixels.each do |pixel| %>
       <tr>
-        <td><%= pixel.name %></td>
-        <td><%= pixel.description %></td>
-        <td><%= pixel.tags %></td>
-        <td><%= pixel.tracks %></td>
+        <td><%= pixel.ip_address %></td>
+        <td><%= pixel.track.name %></td>
+        <td><%= pixel.city %></td>
+        <td><%= pixel.state %></td>
         <td><%= link_to 'Show', pixel %></td>
         <td><%= link_to 'Edit', edit_pixel_path(pixel) %></td>
         <td><%= link_to 'Destroy', pixel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

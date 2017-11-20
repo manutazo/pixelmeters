@@ -21,16 +21,16 @@ module Services
     end
 
     def self.return_new_hash(hash)
-      hash[:campaign] = hash.delete(:track)
-      campaign = hash[:campaign].split(/=/)
-      hash[:campaign] = campaign[1]
+      hash[:track] = hash.delete(:track)
+      track = hash[:track].split(/=/)
+      hash[:track] = track[1]
       hash
     end
 
     def self.return_params(str)
       arry  = str.split(/&/)
       hash = {}
-      if arry.length <= 1
+      if arry.length <= 0
         raise ActionController::RoutingError.new('Not Found')
       else
         arry.each{|a| hash[a.scan(/^\w*/).join('').to_sym] = a.gsub(/^(\w*=)/,'')}
