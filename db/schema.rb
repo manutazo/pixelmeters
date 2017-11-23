@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20171116212634) do
 
-  create_table "pixels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "pixels", force: :cascade do |t|
     t.string   "ip_address"
     t.string   "user_agent"
     t.string   "city"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20171116212634) do
     t.index ["track_id"], name: "index_pixels_on_track_id", using: :btree
   end
 
-  create_table "tracks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tracks", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.string   "tags"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171116212634) do
     t.index ["user_id"], name: "index_tracks_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
