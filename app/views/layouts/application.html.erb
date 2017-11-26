@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
 </head>
 
@@ -13,11 +15,18 @@
 <p class="alert"><%= alert %></p>
 <%end%>
 
-<body>
+
 
 <header>
+  <%if current_page?(url_for(:controller => 'home', :action => 'index')) %>
+  <style media="screen">
+    header{
+      min-height: 0px;
+    }
+  </style>
+  <%end%>
   <!--header-->
-  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top sticky-navigation">
+  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top sticky-navigation" style="min-height: 80px;">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="ion-grid icon-sm"></span>
       </button>
@@ -43,6 +52,9 @@
               <li class="nav-item mr-3">
                 <%= link_to "Cerrar sesión",   destroy_user_session_path , :method=>"delete", :class=>"nav-link" %>
               </li>
+              <li class="nav-item mr-3">
+                <%= link_to "Nuevo Track", new_track_path, :class =>"nav-link" %>
+              </li>
               <%else%>
               <li class="nav-item mr-3">
                 <%= link_to "Ingresar",   user_session_path, :class=>"nav-link" %>
@@ -55,7 +67,10 @@
       </div>
   </nav>
 </header>
+<body>
+
 <%= yield %>
+
 
 
 </body>

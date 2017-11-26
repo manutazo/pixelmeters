@@ -10,14 +10,6 @@ class PixelsController < ApplicationController
   def show
   end
 
-  # GET /pixels/new
-  def new
-    @pixel = Pixel.new
-  end
-
-  # GET /pixels/1/edit
-  def edit
-  end
 
   # POST /pixels
   def create
@@ -28,21 +20,6 @@ class PixelsController < ApplicationController
     else
       render :new
     end
-  end
-
-  # PATCH/PUT /pixels/1
-  def update
-    if @pixel.update(pixel_params)
-      redirect_to @pixel, notice: 'Pixel was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /pixels/1
-  def destroy
-    @pixel.destroy
-    redirect_to pixels_url, notice: 'Pixel was successfully destroyed.'
   end
 
   private

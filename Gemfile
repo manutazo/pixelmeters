@@ -22,6 +22,9 @@ gem 'better_errors'
 gem 'pry'
 end
 gem 'jquery-rails'
+gem 'binding_of_caller'
+gem 'chart-js-rails'
+gem 'groupdate'
 gem 'ionicons-rails'
 
 # To use ActiveModel has_secure_password

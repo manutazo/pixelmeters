@@ -22,7 +22,7 @@ module Tracker
           track_id:        track_id
           }
 
-        if Track.find(track_id).present?
+        if Track.where(id: track_id).present?
           if @pixels = Pixel.create!(params)
             [
               200, { 'Content-Type' => 'image/png' },
@@ -32,7 +32,11 @@ module Tracker
             Rails.logger.warn "\n\n Failed to create record on:#{Date.today}"
           end
         else
-          Rails.logger.warn "\n\n Failed to create record on, track id no exist:#{Date.today}"
+          Rails.logger.warn "\n\n Failed to create record on:#{Date.today}"
+          [
+            200, { 'Content-Type' => 'image/png' },
+            [File.read(File.join(File.dirname(__FILE__), 'tracker.jpg'))]
+          ]
         end
       else
         @app.call(env)

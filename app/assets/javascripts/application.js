@@ -6,4 +6,5 @@
 //
 //= require jquery3
 //= require jquery_ujs
+//= require Chart.min
 //= require_tree .

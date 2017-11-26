@@ -21,7 +21,6 @@
         <td><%= pixel.city %></td>
         <td><%= pixel.state %></td>
         <td><%= link_to 'Show', pixel %></td>
-        <td><%= link_to 'Edit', edit_pixel_path(pixel) %></td>
         <td><%= link_to 'Destroy', pixel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -29,5 +28,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Pixel', new_pixel_path %>

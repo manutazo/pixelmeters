@@ -332,4 +332,43 @@
         </div>
     </section>
 
-    
+
+<script type="text/javascript">
+$(function() {
+var init;
+init = function() {
+  var scroll, secondFeature;
+  secondFeature = $('#features').offset().top;
+  scroll = $(window).scrollTop();
+  if (scroll >= 150) {
+    $('.sticky-navigation').css({
+      'background-color': '#d81b60'
+    });
+  } else {
+    $('.sticky-navigation').css({
+      'background-color': 'transparent'
+    });
+  }
+  if (scroll >= secondFeature - 200) {
+    $('.mobileScreen').css({
+      'background-position': 'center top'
+    });
+  }
+  return false;
+};
+init();
+(new WOW).init();
+$(window).scroll(function() {
+  init();
+});
+$('a.page-scroll').bind('click', function(event) {
+  var $anchor;
+  $anchor = $(this);
+  $('html, body').stop().animate({
+    scrollTop: $($anchor.attr('href')).offset().top - 50
+  }, 1500, 'easeInOutExpo');
+  event.preventDefault();
+});
+});
+
+</script>

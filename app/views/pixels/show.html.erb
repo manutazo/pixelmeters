@@ -2,23 +2,22 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @pixel.name %>
+  <td><%= pixel.ip_address %></td>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @pixel.description %>
+  <td><%= pixel.track.name %></td>
 </p>
 
 <p>
   <strong>Tags:</strong>
-  <%= @pixel.tags %>
+  <td><%= pixel.city %></td>
 </p>
 
 <p>
   <strong>Tracks:</strong>
-  <%= @pixel.tracks %>
+<td><%= pixel.state %></td>
 </p>
 
-<%= link_to 'Edit', edit_pixel_path(@pixel) %> |
 <%= link_to 'Back', pixels_path %>

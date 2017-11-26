@@ -22,6 +22,7 @@ class TracksController < ApplicationController
   # POST /tracks
   def create
     @track = Track.new(track_params)
+    @track.user_id = current_user.id
     @track.user = current_user
     if @track.save
       redirect_to @track, notice: 'Track was successfully created.'
