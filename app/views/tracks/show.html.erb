@@ -8,7 +8,7 @@
 <em><%=@track.description%></em>
 
 <div class="container" style="margin:1%;">
-<h1 style="text-align:center; font-size: 1em;">Para empezar a trackear pega esto en tu pagina o email:  <a href="http://pixel.milenyo.net/tracker.png?track=<%=@track.id%>"><em style="font-size: 0.8em" id="foo">http://pixel.milenyo.net/tracker.png?track=<%=@track.id%></em></a> <button class="btn" data-clipboard-target="#foo">Copiar</button></h1> 
+<h1 style="text-align:center; font-size: 1em;">Para empezar a trackear pega esto en tu pagina o email:  <a href="http://pixelmeters.herokuapp.com/tracker.png?track=<%=@track.id%>"><em style="font-size: 0.8em" id="foo">http://pixelmeters.herokuapp.com/tracker.png?track=<%=@track.id%></em></a> <button class="btn" data-clipboard-target="#foo">Copiar</button></h1> 
 </div>
 <%= line_chart @track.pixels.group_by_day(:created_at).count %>
 
