@@ -1,6 +1,48 @@
-<h1>Editing Track</h1>
 
-<%= render 'form', track: @track %>
+<div class="cont_principal">
 
-<%= link_to 'Show', @track %> |
-<%= link_to 'Back', tracks_path %>
+  <div class="cont_centrar">
+  <div class="cont_login">
+<%= form_for(@track) do |f| %>
+  <% if @track.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>
+
+      <ul>
+      <% @track.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="cont_tabs_login">
+      <ul class='ul_tabs'>
+        <li class="active"><a href="#" onclick="sign_in()">EDITAR TRACK</a>
+        <span class="linea_bajo_nom"></span>
+        </li>
+        <li>
+          <%=link_to "CREAR TRACK",  tracks_path%><span class="linea_bajo_nom"></span>
+        </li>
+      </ul>
+      </div>
+  <div class="cont_text_inputs">
+
+    <%= f.text_field :name, autofocus: true, class: 'input_form_sign d_block active_inp', placeholder:"NOMBRE*" %>
+    <%= f.text_field :description, autofocus: true, class: 'input_form_sign d_block active_inp', placeholder:"DESCRIPCION" %>
+    <%= f.text_field :tags, autofocus: true, class: 'input_form_sign d_block active_inp', placeholder:"TAGS" %>
+
+
+
+    </div>
+    <div class="cont_btn">
+     <button class="btn_sign">Editar</button>
+
+      </div>
+
+    <%end%>
+    </div>
+
+  </div>
+
+
+</div>

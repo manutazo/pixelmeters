@@ -10,23 +10,28 @@
       </ul>
     </div>
   <% end %>
+    <div class="cont_tabs_login">
+      <ul class='ul_tabs'>
+        <li class="active"><a href="#" onclick="sign_in()">CREAR TRACK</a>
+        <span class="linea_bajo_nom"></span>
+        </li>
+        <li>
+          <%=link_to "VER TODOS",  tracks_path%><span class="linea_bajo_nom"></span>
+        </li>
+      </ul>
+      </div>
+  <div class="cont_text_inputs">
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <%= f.text_field :name, autofocus: true, class: 'input_form_sign d_block active_inp', placeholder:"NOMBRE*" %>
+    <%= f.text_field :description, autofocus: true, class: 'input_form_sign d_block active_inp', placeholder:"DESCRIPCION" %>
+    <%= f.text_field :tags, autofocus: true, class: 'input_form_sign d_block active_inp', placeholder:"TAGS" %>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
 
-  <div class="field">
-    <%= f.label :tags %>
-    <%= f.text_field :tags %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    </div>
+    <div class="cont_btn">
+     <button class="btn_sign">Crear</button>
+
+      </div>
+
+    <%end%>

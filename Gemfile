@@ -8,6 +8,8 @@ gem 'rails', '5.0.2'
 gem 'pg', '~> 0.21.0'
 
 gem 'devise'
+gem 'chartkick'
+gem 'httparty'
 
 # Gems used only for assets and not required
 # in production environments by default.
